@@ -1,6 +1,6 @@
 /* Vector2f.h -- Contains the declaration of the Vector2f class
  *
- * Copyright (C) 2016 Ivan Dortulov
+ * Copyright (C) 2016 Ivan Dortulov (ivandortulov@yahoo.com)
  *
  * This software may be modified and distributed under the terms
  * of the MIT license.  See the LICENSE file for details.
@@ -25,6 +25,7 @@ public:
 	Vector2f(float pValues[2]);
 	~Vector2f();
 
+public:
 	void normalize();
 	float length() const;
 
@@ -50,13 +51,12 @@ public:
 	friend Vector2f operator *(float val, const Vector2f& left);
 	friend Vector2f operator -(const Vector2f& left, const Vector2f& right);
 	friend Vector2f operator +(const Vector2f& left, const Vector2f& right);
-public:
 
 public:
 		union
 		{
-			float v[3];
-			struct { float x, y, z; };
+			float v[2];
+			struct { float x, y; };
 		};
 };
 

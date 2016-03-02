@@ -1,6 +1,6 @@
 /* Vector2f.h -- Contains the implementation of the Vector2f class
  *
- * Copyright (C) 2016 Ivan Dortulov
+ * Copyright (C) 2016 Ivan Dortulov (ivandortulov@yahoo.com)
  *
  * This software may be modified and distributed under the terms
  * of the MIT license.  See the LICENSE file for details.
@@ -61,7 +61,7 @@ Vector2f::~Vector2f()
 ///////////////////////////////////////////////////////////////////////////////
 /// Normalizes the vector.
 ///////////////////////////////////////////////////////////////////////////////
-void Vector2f::normalize()
+inline void Vector2f::normalize()
 {
 	float length = this->length();
 	x /= length;
@@ -73,7 +73,7 @@ void Vector2f::normalize()
 ///
 /// @retval float - vector magnitude
 ///////////////////////////////////////////////////////////////////////////////
-float Vector2f::length() const
+inline float Vector2f::length() const
 {
 	return (float)sqrt((double) x * x + y * y);
 }
@@ -85,7 +85,7 @@ float Vector2f::length() const
 ///
 /// @retval float - the dot product
 ///////////////////////////////////////////////////////////////////////////////
-float Vector2f::dot(const Vector2f& right) const
+inline float Vector2f::dot(const Vector2f& right) const
 {
 	return x * right.x + y * right.y;
 }
@@ -97,7 +97,7 @@ float Vector2f::dot(const Vector2f& right) const
 ///
 /// @retval float - distance to other vector
 ///////////////////////////////////////////////////////////////////////////////
-float Vector2f::distance(const Vector2f& other) const
+inline float Vector2f::distance(const Vector2f& other) const
 {
 	return sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y));
 }
@@ -110,7 +110,7 @@ float Vector2f::distance(const Vector2f& other) const
 ///
 /// @retval Vector2f - the reflected vector
 ///////////////////////////////////////////////////////////////////////////////
-Vector2f Vector2f::reflect(const Vector2f& normal) const
+inline Vector2f Vector2f::reflect(const Vector2f& normal) const
 {
 	float dot = this->dot(normal);
 	return Vector2f(x - 2.0f * dot * normal.x,
@@ -123,7 +123,7 @@ Vector2f Vector2f::reflect(const Vector2f& normal) const
 ///
 /// @retval float* - coordinates array
 ///////////////////////////////////////////////////////////////////////////////
-Vector2f::operator float*()
+inline Vector2f::operator float*()
 {
 	return v;
 }
@@ -134,23 +134,23 @@ Vector2f::operator float*()
 ///
 /// @retval const float* - coordinates array
 ///////////////////////////////////////////////////////////////////////////////
-Vector2f::operator const float*() const
+inline Vector2f::operator const float*() const
 {
 	return v;
 }
 
-bool Vector2f::operator !=(const Vector2f& right) const
+inline bool Vector2f::operator !=(const Vector2f& right) const
 {
 	return x != right.x || y != right.y;
 }
 
-bool Vector2f::operator ==(const Vector2f& right) const
+inline bool Vector2f::operator ==(const Vector2f& right) const
 {
 	return fabs(x - right.x) < EPSILON &&
 		   fabs(y - right.y) < EPSILON;
 }
 
-Vector2f& Vector2f::operator =(const Vector2f& right)
+inline Vector2f& Vector2f::operator =(const Vector2f& right)
 {
 	if (this == &right)
 	{
@@ -162,48 +162,48 @@ Vector2f& Vector2f::operator =(const Vector2f& right)
 	return *this;
 }
 
-Vector2f Vector2f::operator -() const
+inline Vector2f Vector2f::operator -() const
 {
 	return Vector2f(-x, -y);
 }
 
-Vector2f& Vector2f::operator *=(float val)
+inline Vector2f& Vector2f::operator *=(float val)
 {
 	x *= val;
 	y *= val;
 	return *this;
 }
 
-Vector2f& Vector2f::operator +=(const Vector2f& right)
+inline Vector2f& Vector2f::operator +=(const Vector2f& right)
 {
 	x += right.x;
 	y += right.y;
 	return *this;
 }
 
-Vector2f& Vector2f::operator -=(const Vector2f& right)
+inline Vector2f& Vector2f::operator -=(const Vector2f& right)
 {
 	x -= right.x;
 	y -= right.y;
 	return *this;
 }
 
-Vector2f operator *(const Vector2f& left, float val)
+inline Vector2f operator *(const Vector2f& left, float val)
 {
 	return Vector2f(left.x * val, left.y * val);
 }
 
-Vector2f operator *(float val, const Vector2f& left)
+inline Vector2f operator *(float val, const Vector2f& left)
 {
 	return Vector2f(left.x * val, left.y * val);
 }
 
-Vector2f operator -(const Vector2f& left, const Vector2f& right)
+inline Vector2f operator -(const Vector2f& left, const Vector2f& right)
 {
 	return Vector2f(left.x - right.x, left.y - right.y);
 }
 
-Vector2f operator +(const Vector2f& left, const Vector2f& right)
+inline Vector2f operator +(const Vector2f& left, const Vector2f& right)
 {
 	return Vector2f(left.x + right.x, left.y + right.y);
 }
