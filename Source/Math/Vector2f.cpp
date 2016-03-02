@@ -12,12 +12,17 @@ const float EPSILON = 0.0000001f;
 
 namespace Lite
 {
+const Vector2f Vector2f::Zero;
+const Vector2f Vector2f::One	( 1.0f, 1.0f);
+const Vector2f Vector2f::Left	(-1.0f, 0.0f);
+const Vector2f Vector2f::Right( 1.0f, 0.0f);
+const Vector2f Vector2f::Up		( 0.0f, 1.0f);
+const Vector2f Vector2f::Down	( 0.0 ,-1.0f);
 
-///////////////////////////////////////////////////////////////////////////////
-/// Default constructor.
-///
-/// Initializes the x and y coordinates to 0.
-///////////////////////////////////////////////////////////////////////////////
+/**
+ * Default constructor.
+ * Initializes the x and y coordinates to 0.
+ */ 
 Vector2f::Vector2f()
 	: x(0)
 	, y(0)
@@ -25,23 +30,23 @@ Vector2f::Vector2f()
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
-/// Parametrized constructor.
-///
-/// @param[in] x - x coordinate
-/// @param[in] y - y coordinate
-///////////////////////////////////////////////////////////////////////////////
+/**
+ * Parametrized constructor.
+ *
+ * @param[in] x - x coordinate
+ * @param[in] y - y coordinate
+ */
 Vector2f::Vector2f(float x, float y)
 	: x(x)
 	, y(y)
 {
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/// Parametrized constructor.
-///
-/// @param[in] pValues - coordinates
-///////////////////////////////////////////////////////////////////////////////
+/**
+ * Parametrized constructor.
+ *
+ * @param[in] pValues[2] - coordinates
+ */
 Vector2f::Vector2f(float pValues[2])
 {
 	if (pValues != 0)
@@ -51,16 +56,29 @@ Vector2f::Vector2f(float pValues[2])
 	}
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/// Destructor.
-///////////////////////////////////////////////////////////////////////////////
+/**
+ * Copy constructor.
+ *
+ * @param[in] other - vector being copied
+ */
+Vector2f::Vector2f(const Vector2f& other)
+  : x(other.x)
+  , y(other.y)
+{
+
+}
+
+/**
+ * Destructor.
+ */
 Vector2f::~Vector2f()
 {
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/// Normalizes the vector.
-///////////////////////////////////////////////////////////////////////////////
+/**
+ * Normalize this vector.
+ * This method makes the vector have a length of 1.
+ */
 inline void Vector2f::normalize()
 {
 	float length = this->length();
@@ -68,48 +86,48 @@ inline void Vector2f::normalize()
 	y /= length;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/// Calculates the vector's magnitude.
-///
-/// @retval float - vector magnitude
-///////////////////////////////////////////////////////////////////////////////
+/**
+ * Calculate this vector's length.
+ *
+ * @return vector length
+*/
 inline float Vector2f::length() const
 {
 	return (float)sqrt((double) x * x + y * y);
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/// Calculates the dot product between this vector and another vector.
-///
-/// @param[in] right - other vector
-///
-/// @retval float - the dot product
-///////////////////////////////////////////////////////////////////////////////
-inline float Vector2f::dot(const Vector2f& right) const
+/**
+ * Calculates the dot product between this vector and the vector other.
+ *
+ * @param[in] other - right hand side vector of the operation
+ *
+ * @return the dot product
+ */
+inline float Vector2f::dot(const Vector2f& other) const
 {
-	return x * right.x + y * right.y;
+	return x * other.x + y * other.y;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/// Calculates the distance between this vector and another vector.
-///
-/// @param[in] other - other vector
-///
-/// @retval float - distance to other vector
-///////////////////////////////////////////////////////////////////////////////
+/**
+ * Calculates the distance between this vector and the vector other.
+ *
+ * @param[in] other - right hand side vector of the operation
+ *
+ * @return distance to other vector
+ */
 inline float Vector2f::distance(const Vector2f& other) const
 {
 	return sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y));
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/// Calculates a reflection of this vector agains a plane represented by the
-/// normal vector.
-///
-/// @param[in] normal - reflection plane normal
-///
-/// @retval Vector2f - the reflected vector
-///////////////////////////////////////////////////////////////////////////////
+/**
+ * Calculates a reflection of this vector off the plane represented by the
+ * normal vector.
+ *
+ * @param[in] normal - reflection plane normal
+ *
+ * @return the reflection
+ */
 inline Vector2f Vector2f::reflect(const Vector2f& normal) const
 {
 	float dot = this->dot(normal);
@@ -117,23 +135,36 @@ inline Vector2f Vector2f::reflect(const Vector2f& normal) const
 		            y - 2.0f * dot * normal.y);
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/// Conversion function which converts the Vector2f to a float array to be
-/// used in OpenGL functions.
-///
-/// @retval float* - coordinates array
-///////////////////////////////////////////////////////////////////////////////
+/**
+ * Returns the angle, in degrees, between this vector and the other vector.
+ *
+ * @param[in] other - right hand side vector of the operation
+ *
+ * @return angle in degrees
+ */
+inline float Vector2f::angle(const Vector2f& other) const
+{
+	return atan2(x * other.y - y * other.x,
+		         dot(other));
+}
+
+/**
+ * Conversion function which converts the Vector2f to a float array to be
+ * used in OpenGL functions.
+ *
+ * @return coordinates array with two elements
+ */
 inline Vector2f::operator float*()
 {
 	return v;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/// Conversion function which converts the Vector2f to a const float array to
-/// be used in OpenGL functions.
-///
-/// @retval const float* - coordinates array
-///////////////////////////////////////////////////////////////////////////////
+/**
+ * Conversion function which converts the Vector2f to a const float array to
+ * be used in OpenGL functions.
+ *
+ * @return const coordinates array with two elements
+ */
 inline Vector2f::operator const float*() const
 {
 	return v;
