@@ -99,9 +99,9 @@ inline float Vector2f::length() const
  *
  * @return vector squared length
 */
-inline float Vector2f::length() const
+inline float Vector2f::lengthSqr() const
 {
-	return (float)sqrt((double) x * x + y * y);
+	return x * x + y * y;
 }
 
 
