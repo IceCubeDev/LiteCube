@@ -15,4 +15,6 @@
 #define LITE_API __declspec(dllimport)
 #endif
 
+static const float EPSILON = 0.0000001f;
+
 #endif // LITEDEFINES_H

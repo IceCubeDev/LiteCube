@@ -8,8 +8,6 @@
 #include "..\..\Include\LiteCube\Math\Vector2f.h"
 #include <cmath>
 
-const float EPSILON = 0.0000001f;
-
 namespace Lite
 {
 const Vector2f Vector2f::Zero;
@@ -97,6 +95,17 @@ inline float Vector2f::length() const
 }
 
 /**
+ * Calculate this vector's squared length.
+ *
+ * @return vector squared length
+*/
+inline float Vector2f::length() const
+{
+	return (float)sqrt((double) x * x + y * y);
+}
+
+
+/**
  * Calculates the dot product between this vector and the vector other.
  *
  * @param[in] other - right hand side vector of the operation
@@ -121,6 +130,18 @@ inline float Vector2f::distance(const Vector2f& other) const
 }
 
 /**
+ * Calculates the squared distance between this vector and the vector other.
+ *
+ * @param[in] other - right hand side vector of the operation
+ *
+ * @return squared distance to other vector
+ */
+inline float Vector2f::distanceSqr(const Vector2f& other) const
+{
+	return sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y));
+}
+
+/**
  * Calculates a reflection of this vector off the plane represented by the
  * normal vector.
  *
@@ -132,7 +153,7 @@ inline Vector2f Vector2f::reflect(const Vector2f& normal) const
 {
 	float dot = this->dot(normal);
 	return Vector2f(x - 2.0f * dot * normal.x,
-		            y - 2.0f * dot * normal.y);
+		              y - 2.0f * dot * normal.y);
 }
 
 /**
@@ -172,24 +193,24 @@ inline Vector2f::operator const float*() const
 
 inline bool Vector2f::operator !=(const Vector2f& right) const
 {
-	return x != right.x || y != right.y;
+	return fabs(x - right.x) > EPSILON || 
+         fabs(y - right.y) > EPSILON;
 }
 
 inline bool Vector2f::operator ==(const Vector2f& right) const
 {
 	return fabs(x - right.x) < EPSILON &&
-		   fabs(y - right.y) < EPSILON;
+		     fabs(y - right.y) < EPSILON;
 }
 
 inline Vector2f& Vector2f::operator =(const Vector2f& right)
 {
-	if (this == &right)
+	if (this != &right)
 	{
-		return *this;
-	}
+	  x = right.x;
+	  y = right.y;
+  }
 
-	x = right.x;
-	y = right.y;
 	return *this;
 }
 
@@ -219,14 +240,14 @@ inline Vector2f& Vector2f::operator -=(const Vector2f& right)
 	return *this;
 }
 
-inline Vector2f operator *(const Vector2f& left, float val)
+inline Vector2f operator *(const Vector2f& left, float right)
 {
-	return Vector2f(left.x * val, left.y * val);
+	return Vector2f(left.x * right, left.y * right);
 }
 
-inline Vector2f operator *(float val, const Vector2f& left)
+inline Vector2f operator *(float left, const Vector2f& right)
 {
-	return Vector2f(left.x * val, left.y * val);
+	return Vector2f(right.x * left, right.y * left);
 }
 
 inline Vector2f operator -(const Vector2f& left, const Vector2f& right)

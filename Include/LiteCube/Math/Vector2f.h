@@ -26,8 +26,10 @@ public:
 public:
 	void normalize();
 	float length() const;
+  float lengthSqr() const;
 	float dot(const Vector2f& other) const;
 	float distance(const Vector2f& other) const;
+  float distanceSqr(const Vector2f& other) const;
 	Vector2f reflect(const Vector2f& normal) const;
 	float angle(const Vector2f& other)  const;
 
@@ -45,8 +47,8 @@ public:
 	Vector2f& operator +=(const Vector2f& right);
 	Vector2f& operator -=(const Vector2f& right);
 
-	friend Vector2f operator *(const Vector2f& left, float val);
-	friend Vector2f operator *(float val, const Vector2f& left);
+	friend Vector2f operator *(const Vector2f& left, float right);
+	friend Vector2f operator *(float left, const Vector2f& right);
 	friend Vector2f operator -(const Vector2f& left, const Vector2f& right);
 	friend Vector2f operator +(const Vector2f& left, const Vector2f& right);
 
