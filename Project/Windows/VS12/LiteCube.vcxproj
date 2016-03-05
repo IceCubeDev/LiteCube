@@ -168,11 +168,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\LiteCube\Core\Window.h" />
     <ClInclude Include="..\..\..\Include\LiteCube\LiteDefines.h" />
     <ClInclude Include="..\..\..\Include\LiteCube\Math\Vector2f.h" />
     <ClInclude Include="..\..\..\Include\LiteCube\Math\Vector3f.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Source\Core\Windows\Window.cpp" />
     <ClCompile Include="..\..\..\Source\Math\Vector2f.cpp" />
     <ClCompile Include="..\..\..\Source\Math\Vector3f.cpp" />
   </ItemGroup>

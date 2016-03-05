@@ -19,6 +19,12 @@
     <Filter Include="Source Files\Math">
       <UniqueIdentifier>{9df6c6d9-2419-490f-aa36-98aeafa1b95d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{0218664f-8ec4-44b1-abb8-a7bd7086f9bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{9cde1ec2-ee74-4c9a-99f7-008710b37d58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\LiteCube\LiteDefines.h">
@@ -28,7 +34,10 @@
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\LiteCube\Math\Vector3f.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\LiteCube\Core\Window.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -36,7 +45,10 @@
       <Filter>Source Files\Math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Math\Vector3f.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Core\Windows\Window.cpp">
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

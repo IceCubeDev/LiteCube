@@ -15,6 +15,21 @@
 #define LITE_API __declspec(dllimport)
 #endif
 
+#include <string>
+
+namespace Lite
+{
+
 static const float EPSILON = 0.0000001f;
+
+#if defined(UNICODE) || defined(_UNICODE)
+typedef std::wstring String;
+typedef wchar_t      Char;
+#else
+typedef std::string  String;
+typedef char         Char;
+#endif
+
+}
 
 #endif // LITEDEFINES_H
