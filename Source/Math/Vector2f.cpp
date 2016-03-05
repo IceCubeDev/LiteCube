@@ -1,7 +1,13 @@
-/* Vector2f.h -- Contains the implementation of the Vector2f class
+/** 
+ * @file Vector2f.cpp
+ * @date 28.02.2016
+ * @author Ivan Dortulov (ivandortulov@yahoo.com)
+ * @brief Contains the implementation of the Vector2f class
  *
+ * @section COPYRIGHT
  * Copyright (C) 2016 Ivan Dortulov (ivandortulov@yahoo.com)
  *
+ * @section LICENSE 
  * This software may be modified and distributed under the terms
  * of the MIT license.  See the LICENSE file for details.
  */
@@ -18,7 +24,8 @@ const Vector2f Vector2f::Up		( 0.0f, 1.0f);
 const Vector2f Vector2f::Down	( 0.0 ,-1.0f);
 
 /**
- * Default constructor.
+ * @brief Default constructor.
+ *
  * Initializes the x and y coordinates to 0.
  */ 
 Vector2f::Vector2f()
@@ -29,7 +36,7 @@ Vector2f::Vector2f()
 
 
 /**
- * Parametrized constructor.
+ * @brief Parametrized constructor.
  *
  * @param[in] x - x coordinate
  * @param[in] y - y coordinate
@@ -41,7 +48,7 @@ Vector2f::Vector2f(float x, float y)
 }
 
 /**
- * Parametrized constructor.
+ * @brief Parametrized constructor.
  *
  * @param[in] pValues[2] - coordinates
  */
@@ -55,7 +62,7 @@ Vector2f::Vector2f(float pValues[2])
 }
 
 /**
- * Copy constructor.
+ * @brief Copy constructor.
  *
  * @param[in] other - vector being copied
  */
@@ -67,14 +74,15 @@ Vector2f::Vector2f(const Vector2f& other)
 }
 
 /**
- * Destructor.
+ * @brief Destructor.
  */
 Vector2f::~Vector2f()
 {
 }
 
 /**
- * Normalize this vector.
+ * @brief Normalize this vector.
+ *
  * This method makes the vector have a length of 1.
  */
 inline void Vector2f::normalize()
@@ -85,7 +93,7 @@ inline void Vector2f::normalize()
 }
 
 /**
- * Calculate this vector's length.
+ * @brief Calculate this vector's length.
  *
  * @return vector length
 */
@@ -95,7 +103,7 @@ inline float Vector2f::length() const
 }
 
 /**
- * Calculate this vector's squared length.
+ * @brief Calculate this vector's squared length.
  *
  * @return vector squared length
 */
@@ -106,7 +114,7 @@ inline float Vector2f::lengthSqr() const
 
 
 /**
- * Calculates the dot product between this vector and the vector other.
+ * @brief Calculates the dot product between this vector and the vector other.
  *
  * @param[in] other - right hand side vector of the operation
  *
@@ -118,7 +126,7 @@ inline float Vector2f::dot(const Vector2f& other) const
 }
 
 /**
- * Calculates the distance between this vector and the vector other.
+ * @brief Calculates the distance between this vector and the vector other.
  *
  * @param[in] other - right hand side vector of the operation
  *
@@ -130,7 +138,7 @@ inline float Vector2f::distance(const Vector2f& other) const
 }
 
 /**
- * Calculates the squared distance between this vector and the vector other.
+ * @brief Calculates the squared distance between this vector and the vector other.
  *
  * @param[in] other - right hand side vector of the operation
  *
@@ -142,7 +150,7 @@ inline float Vector2f::distanceSqr(const Vector2f& other) const
 }
 
 /**
- * Calculates a reflection of this vector off the plane represented by the
+ * @brief Calculates a reflection of this vector off the plane represented by the
  * normal vector.
  *
  * @param[in] normal - reflection plane normal
@@ -157,7 +165,7 @@ inline Vector2f Vector2f::reflect(const Vector2f& normal) const
 }
 
 /**
- * Returns the angle, in degrees, between this vector and the other vector.
+ * @brief Returns the angle, in degrees, between this vector and the other vector.
  *
  * @param[in] other - right hand side vector of the operation
  *
@@ -170,7 +178,7 @@ inline float Vector2f::angle(const Vector2f& other) const
 }
 
 /**
- * Conversion function which converts the Vector2f to a float array to be
+ * @brief Conversion function which converts the Vector2f to a float array to be
  * used in OpenGL functions.
  *
  * @return coordinates array with two elements
@@ -181,7 +189,7 @@ inline Vector2f::operator float*()
 }
 
 /**
- * Conversion function which converts the Vector2f to a const float array to
+ * @brief Conversion function which converts the Vector2f to a const float array to
  * be used in OpenGL functions.
  *
  * @return const coordinates array with two elements

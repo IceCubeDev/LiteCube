@@ -1,7 +1,13 @@
-/* Vector3f.h -- Contains the implementation of the Vector3f class
+/** 
+ * @file Vector3f.cpp
+ * @date 03.03.2016
+ * @author Ivan Dortulov (ivandortulov@yahoo.com)
+ * @brief Contains the declaration of the Vector3f class
  *
+ * @section COPYRIGHT
  * Copyright (C) 2016 Ivan Dortulov (ivandortulov@yahoo.com)
  *
+ * @section LICENSE 
  * This software may be modified and distributed under the terms
  * of the MIT license.  See the LICENSE file for details.
  */

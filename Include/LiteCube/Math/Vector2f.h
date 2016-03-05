@@ -1,7 +1,13 @@
-/* Vector2f.h -- Contains the declaration of the Vector2f class
+/** 
+ * @file Vector2f.h
+ * @date 28.02.2016
+ * @author Ivan Dortulov (ivandortulov@yahoo.com)
+ * @brief Contains the declaration of the Vector2f class
  *
+ * @section COPYRIGHT
  * Copyright (C) 2016 Ivan Dortulov (ivandortulov@yahoo.com)
  *
+ * @section LICENSE 
  * This software may be modified and distributed under the terms
  * of the MIT license.  See the LICENSE file for details.
  */
@@ -13,7 +19,7 @@
 namespace Lite
 {
 
-//!  A test class. 
+//!  Class representing a 2D mathematical vector. 
 class LITE_API Vector2f
 {
 public:
